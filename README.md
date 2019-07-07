@@ -1,6 +1,5 @@
-![](https://cdn.discordapp.com/attachments/593513849496404016/593883024136077332/Connect.png)
 <h1 align="center">
-👋  Welcome to Connect Beta  🔰
+👋  Welcome to IntoLevel Beta  🔰
 </h1>
 
 ![](https://img.shields.io/badge/Version-Beta-blue.svg) ![](https://img.shields.io/badge/Dev-Codingpro%230001-brightgreen.svg)
