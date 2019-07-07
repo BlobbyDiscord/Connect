@@ -306,7 +306,7 @@ var commands = {
    aliases:[],
    run: (message) => {
      if (!profiles.profiles.includes(message.author.id)) return message.channel.send("<:warning:579387552453099561> **Whoops!** Please create your profile first: `.setup`")
-     if (!message.content.startsWith("+edit desc") && !message.content.startsWith("+edit back")) {
+     if (!message.content.startsWith(".edit desc") && !message.content.startsWith(".edit back")) {
        const canvas = Canvas.createCanvas(700, 250);
        const ctx = canvas.getContext('2d');
        Canvas.loadImage('https://convertingcolors.com/plain-2C2F33.svg').then((background) => {
@@ -320,7 +320,7 @@ var commands = {
                message.channel.send(attachment);
            })
        })
-     } else if (message.content.startsWith("+edit desc")) {
+     } else if (message.content.startsWith(".edit desc")) {
        const filter = (m) => m.author.id === message.author.id;
        message.channel.send("📝 Send your desired description to this channel!")
        const collector = message.channel.createMessageCollector(filter);
@@ -331,7 +331,7 @@ var commands = {
          collector.stop()
        });
        collector.on('end', collected => console.log(`Collected ${collected.size} items`));
-     } else if (message.content.startsWith('+edit back')) {
+     } else if (message.content.startsWith('.edit back')) {
        let attachment = new Discord.Attachment('choosebackground.png', 'profile.png');
        message.channel.send('📝 Send your desired background\'s number to this channel!', attachment);
        const filter = (m) => m.author.id === message.author.id;
