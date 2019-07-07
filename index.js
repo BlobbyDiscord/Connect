@@ -315,7 +315,7 @@ var commands = {
                ctx.drawImage(icon, 20, 50, 150, 150);
                ctx.font = '30px sans-serif';
                ctx.fillStyle = '#ffffff';
-               ctx.fillText(`+edit desc - edit your description\n\n+edit back - edit your background`, 175, 100);
+               ctx.fillText(`.edit desc - Edit your description\n\n.edit back - Edit your background`, 175, 100);
                const attachment = new Discord.Attachment(canvas.toBuffer(), 'profile.png');
                message.channel.send(attachment);
            })
