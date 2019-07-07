@@ -32,7 +32,7 @@ client.login(process.env.TOKEN).catch(console.error);
 
 /* When bot user is ready: */
 client.on('ready', function (evt, callback) {
- client.user.setUsername("Connect"); // Set Bot Username
+ client.user.setUsername("IntoLevel"); // Set Bot Username
  console.log(client.user.tag + " online in " + client.guilds.size + " guilds!"); // Log Bot Startup
 
  /* Set Bot Status */
