@@ -508,7 +508,7 @@ client.on("message", async (message) => {
     }, 30000);
   }
   }
- if(message.content.toLowerCase().startsWith("+")) {
+ if(message.content.toLowerCase().startsWith(".")) {
    for(let i in commands) {
      if(message.content.toLowerCase().split(" ")[0].slice(1) === i || commands[i].aliases.includes(message.content.toLowerCase().split(" ")[0].slice(1))) {
        commands[i].run(message)
