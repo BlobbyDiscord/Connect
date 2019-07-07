@@ -39,7 +39,7 @@ client.on('ready', function (evt, callback) {
  client.user.setPresence({
    game: {
      type: 0, // Set to 'playing'
-     name: `+help | ConnectBot Beta | ${client.guilds.size} servers!` // Set what the bot is 'playing'
+     name: `.help | IntoLevel Beta | ${client.guilds.size} servers!` // Set what the bot is 'playing'
    },
    status: "online" // Set bot to online status
  });
@@ -67,24 +67,24 @@ var commands = {
    run: (message) => {
      let embed = new Discord.RichEmbed()
      embed.setAuthor("ConnectBot Commands", client.user.avatarURL)
-     embed.addField("📇 **Profile Commands**","`+setup` - Setup your profile\n`+profile` - View your profile\n`+get (user)` - Get another user's profile\n`+edit` - Edit your profile")
-     embed.addField("💵 **Get Experience**", "`+work` - Gain from 1xp to 300xp every 10 minutes\n`+gamble (xp)` - 1/2 chance of doubling xp\n`+crime` - 1/5 chance of getting up to 1200xp. Or loosing it.\n`+fish` - Go fishing, and try to sell the fish for more than you pay for casting!\n`Every Message` - Gain 10xp for every message every 30 seconds")
-     embed.addField("🛒 **Buy Stuff**","`+shop` - Buy something from the shop.")
+     embed.addField("📇 **Profile Commands**","`.setup` - Setup your profile\n`.profile` - View your profile\n`.get (user)` - Get another user's profile\n`.edit` - Edit your profile")
+     embed.addField("💵 **Get Experience**", "`.work` - Gain from 1xp to 300xp every 10 minutes\n`.gamble (xp)` - 1/2 chance of doubling xp\n`.crime` - 1/5 chance of getting up to 1200xp. Or loosing it.\n`.fish` - Go fishing, and try to sell the fish for more than you pay for casting!\n`Every Message` - Gain 10xp for every message every 30 seconds")
+     embed.addField("🛒 **Buy Stuff**","`.shop` - Buy something from the shop.")
      embed.setColor("GREEN")
-     embed.setFooter("Connect Soical Bot")
+     embed.setFooter("INtoLevel")
      message.channel.send(embed)
    }
  },
  shop: {
    usage: "shop",
-   description: "Buy something for xps!",
+   description: "Buy something with earned xp!",
    category: "shop",
    aliases:[],
    run: (message) => {
-     if (!profiles.profiles.includes(message.author.id)) return message.channel.send("<:warning:579387552453099561> **Whoops!** Please create your profile first: `+setup`")
+     if (!profiles.profiles.includes(message.author.id)) return message.channel.send("<:warning:579387552453099561> **Whoops!** Please create your profile first: `.setup`")
      let embed = new Discord.RichEmbed()
      embed.setAuthor("XP Shop","https://cdn2.iconfinder.com/data/icons/actions-states-vol-1-colored/48/JD-13-512.png")
-     embed.setTitle("Send the item you want to buy's ID to this channel:")
+     embed.setTitle("Message the product number you want to buy to this channel:")
      embed.addField(":one: Custom Profile Text Color","Cost: 1000xp")
      embed.addField(":two: Turt Badge On Profile","Cost: 2500xp")
      embed.addField(":three: MLG Profile Background","Cost: 3500xp")
@@ -164,7 +164,7 @@ var commands = {
    category: "gain",
    aliases:[],
    run: (message) => {
-     if (!profiles.profiles.includes(message.author.id)) return message.channel.send("<:warning:579387552453099561> **Whoops!** Please create your profile first: `+setup`")
+     if (!profiles.profiles.includes(message.author.id)) return message.channel.send("<:warning:579387552453099561> **Whoops!** Please create your profile first: `.setup`")
      let catches = ["🦀","🐟","🐠","🐡"]
      let sell = Math.floor(Math.random()*30)
      let change = sell-15
@@ -184,7 +184,7 @@ var commands = {
    category: "gain",
    aliases:[],
    run: (message) => {
-     if (!profiles.profiles.includes(message.author.id)) return message.channel.send("<:warning:579387552453099561> **Whoops!** Please create your profile first: `+setup`")
+     if (!profiles.profiles.includes(message.author.id)) return message.channel.send("<:warning:579387552453099561> **Whoops!** Please create your profile first: `.setup`")
      let crimes = ["rob a bank", "steal a bread loaf", "find money on the ground", "hack discord", "steal a carpet","steal your friend's chair","dab","hit the whip"]
      if (!crimecooldown.has(message.author.id)) {
        let crime = crimes[Math.floor(Math.random()*crimes.length)];
@@ -228,11 +228,11 @@ var commands = {
  },
  gamble: {
    usage: "gamble (amount of xps)",
-   description: "Gamble ur xps",
+   description: "Gamble using gained xp",
    category: "gain",
    aliases:[],
    run: (message) => {
-     if (!profiles.profiles.includes(message.author.id)) return message.channel.send("<:warning:579387552453099561> **Whoops!** Please create your profile first: `+setup`")
+     if (!profiles.profiles.includes(message.author.id)) return message.channel.send("<:warning:579387552453099561> **Whoops!** Please create your profile first: `.setup`")
      let args = parseInt(message.content.substring(8),10)
      if (!args || args==="") return message.channel.send("<:warning:579387552453099561> **Whoops!** Please include how much money to gamble.")
      if(args>datafile.xp[message.author.id]) return message.channel.send("<:warning:579387552453099561> **Whoops!** You can't gamble more than you have! You have " + datafile.xp[message.author.id] + "xp and tried to gamble " + args + "xp!")
@@ -273,7 +273,7 @@ var commands = {
    category: "gain",
    aliases:[],
    run: (message) => {
-     if (!profiles.profiles.includes(message.author.id)) return message.channel.send("<:warning:579387552453099561> **Whoops!** Please create your profile first: `+setup`")
+     if (!profiles.profiles.includes(message.author.id)) return message.channel.send("<:warning:579387552453099561> **Whoops!** Please create your profile first: `.setup`")
      let jobs = ["Discord Bot Coder","Discord Employee","Youtuber With 1 Subscriber","Bathroom Cleaner","Meter Maid","Hamburgaler","Trash Diver","Wumpus Petter","Emoji Maker","Instagram Follower","Minecraft Server Owner","Dog Groomer","TV","Bad Product Designer"]
      if (!workcooldown.has(message.author.id)) {
        let job = jobs[Math.floor(Math.random()*jobs.length)];
@@ -305,7 +305,7 @@ var commands = {
    category: "profile",
    aliases:[],
    run: (message) => {
-     if (!profiles.profiles.includes(message.author.id)) return message.channel.send("<:warning:579387552453099561> **Whoops!** Please create your profile first: `+setup`")
+     if (!profiles.profiles.includes(message.author.id)) return message.channel.send("<:warning:579387552453099561> **Whoops!** Please create your profile first: `.setup`")
      if (!message.content.startsWith("+edit desc") && !message.content.startsWith("+edit back")) {
        const canvas = Canvas.createCanvas(700, 250);
        const ctx = canvas.getContext('2d');
@@ -362,7 +362,7 @@ var commands = {
      if (profiles.profiles.includes(message.author.id)) return message.channel.send("<:warning:579387552453099561> **Whoops!** You already have a profile!")
      message.channel.send("**<:connect:593211341808861204> Beep Boop Beep! We're setting up your profile!**").then(msg=>{
        profiles.background[message.author.id] = "https://convertingcolors.com/plain-2C2F33.svg"
-       profiles.description[message.author.id] = 'No Description Set'
+       profiles.description[message.author.id] = 'No Description Set OwO'
        profiles.color[message.author.id] = "#ffffff"
        profiles.profiles.push(message.author.id)
        profiles.badges[message.author.id]=[]
@@ -370,7 +370,7 @@ var commands = {
        fs.writeFileSync("profiles.json", JSON.stringify(profiles));
        fs.writeFileSync("data.json", JSON.stringify(datafile));
        setTimeout(()=>{
-         msg.edit("<a:acheck:587844986868072458> **Your profile has been added.** View all commands with `+help`.")
+         msg.edit("<a:acheck:587844986868072458> **Your profile has been added.** View all commands with `.help`.")
          commands["profile"].run(message)
        },1500)
      })
@@ -486,7 +486,7 @@ var commands = {
                ctx.drawImage(icon, 20, 50, 150, 150);
                ctx.font = '40px sans-serif';
                ctx.fillStyle = '#ffffff';
-               ctx.fillText(`You don't have a profile!\nRun +setup`, 190, 110);
+               ctx.fillText(`You don't have a profile!\nRun .setup`, 190, 110);
                const attachment = new Discord.Attachment(canvas.toBuffer(), 'profile.png');
                message.channel.send(attachment);
            })
