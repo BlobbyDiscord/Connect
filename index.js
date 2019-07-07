@@ -360,7 +360,7 @@ var commands = {
    aliases:[],
    run: (message) => {
      if (profiles.profiles.includes(message.author.id)) return message.channel.send("<:warning:579387552453099561> **Whoops!** You already have a profile!")
-     message.channel.send("**<:connect:593211341808861204> Beep Boop Beep! We're setting up your profile!**").then(msg=>{
+     message.channel.send("**Hmm... Beep Boop Beep! We're setting up your profile!**").then(msg=>{
        profiles.background[message.author.id] = "https://convertingcolors.com/plain-2C2F33.svg"
        profiles.description[message.author.id] = 'No Description Set OwO'
        profiles.color[message.author.id] = "#ffffff"
@@ -370,7 +370,7 @@ var commands = {
        fs.writeFileSync("profiles.json", JSON.stringify(profiles));
        fs.writeFileSync("data.json", JSON.stringify(datafile));
        setTimeout(()=>{
-         msg.edit("<a:acheck:587844986868072458> **Your profile has been added.** View all commands with `.help`.")
+         msg.edit("<:white_check_mark:597445444854874112>  **Your profile has been added.** View all commands with `.help`.")
          commands["profile"].run(message)
        },1500)
      })
